@@ -1,0 +1,43 @@
+#summary List of todo's
+
+= Internal =
+ * use TEB/TIB for fast retrieval of:
+  * Threadid
+  * Thread Local storage: add (TLS index x 10H) to pointer for direct acces of threadvar's
+ * make Linux compatible (use FPC compiler?)
+ * make Linux library 
+ * make configuration form:
+  * choose time measurement method (RTSC: single cpu; PerformanceCounters: all cpu's; Multimedia timers: all cpu's; Real used cycles, etc)
+   * store frequency of time measurement method (for result viewing)
+  * other custom options
+
+= Result viewer =
+ * Results:
+  * show time also in seconds (0.0000001 instead of 1us etc)
+  * show graph of duration of all calls of selected item in time 
+ * Detailed full trace of calls in time
+  * show thread's side by side
+  * show blocks and subblock (childs) with size depending on duration
+  * different block colors for easy viewing parents/child calls
+  * filter tiny functions?
+  * show text (function name) size depending on duration?
+ * Select different time calculations:
+  * start/stop time (time of pressing start/stop buttons)
+  * first/last time (time of first and last recorded result)
+  * first/last time of thread (time of first and last recorded result of selected thread)
+  * sum of all cycles of all threads 
+  * sum of all cycles of selected thread (default)
+ * Show history (of each thread?) in a graphical chart:
+  * as activity (nr of functions calls per 5min etc)
+  * as call depth
+  * as recorded duration (per 5min etc)
+ * Show (graphical chart?) extra information (recorded per interval of 250msec?) to see how a function affects the system or system has affected the function:
+  * System CPU usage 
+  * System Mem usage 
+  * System HD usage
+  * Program CPU, Mem, HD, etc usage
+  
+
+= New =
+  * Show / ignore new memory block creation
+  * Compensate multi overhead of child functions to the parent function

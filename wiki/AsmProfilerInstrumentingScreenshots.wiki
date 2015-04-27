@@ -1,0 +1,10 @@
+#summary Screenshots of the "AsmProfiler Instrumenting mode"
+
+Profile Result Viewer, function overview: <br/>
+[http://asmprofiler.googlecode.com/files/ProfileResult-Function.png]
+
+Profile Result Viewer, detailed (tree) view: <br/>
+[http://asmprofiler.googlecode.com/files/profiler-tree-results.png]
+
+Call duration history chart: <br/>
+[http://asmprofiler.googlecode.com/files/profiler-duration-chart.png]

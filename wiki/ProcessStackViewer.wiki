@@ -1,0 +1,23 @@
+#summary Live stack viewing of a running process
+
+= Process list =
+
+You can choose a process from the list:<br/>
+[http://asmprofiler.googlecode.com/files/SelectProcess_viewer.png]
+
+Double click an item, or press the "Live view" button to view the stacks of the selected process.<br/>
+
+But you can also start a profiling session by clicking the *[StartProfiling profile it]* button.<br/>
+You can also inject the "asmprofiler.dll" (if the dll exists in the same directory) to start an *[AsmProfilerInstrumentingMode instrumenting profiling session]*.
+
+= Live view =
+
+Here you can view the stack of one of the threads of the selected process:<br/>
+[http://asmprofiler.googlecode.com/files/LiveView.png]
+
+You can select a thread from list on the left side. You can enable an auto refresh, so the stack gets refreshed every second. <br/>
+You can also try one of the alternative stack tracing modes (default mode uses stack frames, but stack can be unusable if a <br/>
+process is very busy, due to changing stack contents, temporary variables and pointers, etc). <br/>
+Other modes are:
+  * raw stack walking (show all valid pointers, so lot of false positives)
+  * Windows StackWalk64 API (also uses stack frames?)

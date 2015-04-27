@@ -1,0 +1,41 @@
+#summary Short description how to use the profiler
+
+= Profile Form =
+
+When you have started the profiler (see GettingStarted) you get a
+small window in the upper left of your screen. With this form you
+use all functions of the profiler.
+
+[http://asmprofiler.googlecode.com/files/Instrumenting_Start_New.png]
+
+= Selecting items =
+
+The profiler needs a ".map" file for all possible names and addresses 
+of the functions that can be profiled. If you own program has no .map
+file, the profiler will use it's own.
+
+Before you can profile, you need to tell the profiler which functions
+you want to be profiled. By pressing the "Select items" button, you will
+get an other form, with a list of items of the .map file. This list is
+a tree with units and functions in each unit. You can select a whole unit with all functions or one function, or multi-select the wanted items.
+[http://asmprofiler.googlecode.com/files/Instrumenting_Select2.png]
+
+= Start profiling! =
+
+When you have selected some items, you can start the profiler by pressing the "Start" button. First, the profiler will prepare all items and will ask to continue when it is ready (this way you can exactly time you profiling).
+When you press "OK" the profiler will run! Do something you want to profile and press "Stop" when you are finished. That's all!
+
+*
+Note: the profiler is a high detailed one: it stores every call in memory.
+So don't profile too long, you will run out of memory (profiler will stop then).
+*
+
+= Viewing results = 
+
+After stopping the profiler you can view the result by pressing the "Show results" button. This form will show the profiled items with there number of calls, times, percent of timer per unit, total, total including child times, average, etc.
+[http://asmprofiler.googlecode.com/files/Instrumenting_Results.png]
+
+In the above example, you can see that the "Sleep" function takes the most time. 
+Note: the "total" times show the total *own* time (time executed within own function), whereas child times (CT) show the time executed in *called sub* functions. Again, in the above example, Sleep does not call other sub functions (or at least not profiled) so the "total child" time is 0.
+
+You can double click on an item to jump to the second tab with more details of the selected item (double click on the tree to jump to the details of a child etc).

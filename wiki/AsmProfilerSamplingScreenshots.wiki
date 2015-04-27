@@ -1,0 +1,19 @@
+#summary Screenshots of the "AsmProfiler Sampling mode"
+
+Main screen: <br/>
+[http://asmprofiler.googlecode.com/files/Mainscreen.png]
+
+Profiling screen: <br/>
+[http://asmprofiler.googlecode.com/files/ProfilingScreen_start.png]
+
+Process selector:<br/>
+[http://asmprofiler.googlecode.com/files/SelectProcess.png]
+
+Results, function overview:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_functionoverview.png]
+
+Results, detailed overview:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_detailedview.png]
+
+Results, thread chart:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_threadchart.png]

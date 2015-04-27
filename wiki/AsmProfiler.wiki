@@ -1,0 +1,12 @@
+#summary Some explanations...
+
+=Why this name?=
+
+AsmProfiler stands for "assembly profiler" because the heart of the profiler is written in assembly.
+
+=Why another profiler?=
+
+There are some (good) profilers available, but these are:
+  * Too expensive, and I want that every programmer can use a profiler
+  * Too bloated, some profilers I know was so bloated I didn't knew what to do...
+  * Misses some functionality, for example I wanted exact function call logging (even if that uses lots of memory) and I wanted nice charts :-)

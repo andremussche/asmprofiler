@@ -1,0 +1,4 @@
+#labels Featured
+Screenshots:
+  * [AsmProfilerSamplingScreenshots AsmProfiler, Sampling mode]
+  * [AsmProfilerInstrumentingScreenshots AsmProfiler, Instrumenting mode]

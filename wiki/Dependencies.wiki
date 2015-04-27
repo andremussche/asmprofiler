@@ -1,0 +1,20 @@
+#summary Dependencies for building the source code
+#labels Phase-Implementation,Phase-Requirements
+
+= Introduction =
+
+Overview of needed libraries to build the source code.
+
+= Details =
+
+Project dependencies:
+
+ * JEDI Win32API 
+ http://www.delphi-jedi.org/apilibrary.html
+ * JEDI Code Library 1.99 (JCL 2 and 3 should also work)
+ http://sourceforge.net/projects/jcl/
+ * FastMM 4
+ http://sourceforge.net/projects/fastmm/
+ * Virtual Treeview 
+ http://www.soft-gems.net/index.php?option=com_content&task=view&id=12&Itemid=33
+ http://www.soft-gems.net/supplement/download.php?ID=28

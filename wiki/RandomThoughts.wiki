@@ -1,0 +1,9 @@
+NtCreateProfile
+
+http://undocumented.ntinternals.net/UserMode/Undocumented%20Functions/NT%20Objects/Profile/NtCreateProfile.html
+
+http://www.google.com/codesearch?hl=en&q=+NtCreateProfile+show:Hhq44tYQiEk:10VMJ3OQ4Ac:Y9Fr3fh_nos&sa=N&cd=17&ct=rc&cs_p=ftp://ftp.wdj.com/pub/webzip/0811/plooy.zip&cs_f=KERNPROF.C#a0
+
+NtQuerySystemInformation
+
+http://www.thedelphimagazine.com/disks/dmag127.zip

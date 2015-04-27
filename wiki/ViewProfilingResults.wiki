@@ -1,0 +1,47 @@
+#summary Viewing a previous profiling session.
+
+= Sampling Results =
+
+If you see this screen directly from the main screen (for loading a saved session),<br/>
+you will see an "empty" screen:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_empty.png]
+
+If you see this screen after executing (or loading) a profiling session, it will be <br/>
+filled with some information about that session:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_general.png]
+
+== Load / Save ==
+
+You can load a previous session by clicking the *Load from file* button:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_load.png]<br/>
+The default file extension is ".sampling".
+
+You can save a session by clicking the *Save to file* button:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_save.png]<br/>
+The default file extension is ".sampling".
+
+= Results =
+
+The *Resuls* tab contains the detailed results:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_functionoverview.png]
+
+It shows the thread id's on the left (id 0 is "all threads summed") and 3 tabs on the right. <br/>
+Default is the *Function Overview* tab selected: it shows all functions and their hit counts and estimated time in a flat list.
+
+== Detailed view ==
+
+The *Detailed view* tab contains results, grouped in a tree view:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_detailedview.png]
+
+The results are grouped by module (.exe; .dll), unit, class + function, and line number.<br/>
+If you select a function, then the child and parent calls are listed below.
+
+
+== Thread chart ==
+
+The *Thread chart* tab shows the stack size and height during the sampling session:<br/>
+[http://asmprofiler.googlecode.com/files/SamplingResults_threadchart.png]
+
+If you select a thread in the list on the left side, then this thread is made *bold*. You can also hide or show the specific chart series by (un)checking the checkboxes.
+
+(more charts will be added in future!)

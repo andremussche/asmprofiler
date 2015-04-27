@@ -1,0 +1,29 @@
+#summary Getting started with subversion
+
+= Introduction =
+
+How to start using subversion under Windows.
+
+= Details =
+
+Details how to start.
+
+==Links:==
+
+ * Subversion package:
+ http://subversion.tigris.org/project_packages.html
+ * RapidSVN client:
+ http://rapidsvn.tigris.org/
+
+==Checkout==
+ * Start RapidSVN, menu "Repository", choose "Checkout"
+ * Fill URL with: "https://asmprofiler.googlecode.com/svn/trunk"
+ * Fill destination directory and press OK
+ * login with username and password
+
+
+==Create repository?==
+
+Create local repository:
+
+{{{c:\Program Files\Subversion\bin>svnadmin create c:\projects\svn}}}

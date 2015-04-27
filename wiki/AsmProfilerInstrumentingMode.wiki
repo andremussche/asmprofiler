@@ -1,0 +1,16 @@
+#summary AsmProfiler Instrumenting Mode
+#labels Featured
+
+= Instrumenting Mode =
+
+The *instrumenting mode* of AsmProfiler is less easier to use than the *[AsmProfilerSamplingMode sampling mode]*, but on the other hand, it gives exact and more detailed results!<br/>
+It works by detouring the selected functions to some AsmProfiler functions, so the start and end time can be measured.
+
+= Install or start the profiler =
+
+This mode does not have a fancy GUI yet (like the [AsmProfilerSamplingMode sampling mode] has), but it is not very difficult to get it started:
+  * [GettingStarted How to install the AsmProfiler]
+  * [HowtoUseTheProfiler How to use the profiler]
+  * [AsmProfilerInstrumentingScreenshots Some screenshots]
+
+Some (old) information about the "instrumenting mode" (will be updated/rewritten soon!)

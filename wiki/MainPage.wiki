@@ -1,0 +1,42 @@
+#summary AsmProfiler is a free and open source profiler for 32 bit Windows applications.
+
+= Introduction =
+
+AsmProfiler can profile your application to find bottlenecks in your code (for optimizations). It is a Windows profiler (Windows NT, 2000, XP and x86) and can profile
+any function (dll, c++, delphi, ?) without changing the original code or even the need of the original code.
+
+AsmProfiler consists of 2 parts:
+  * Instrumenting mode: 
+    For exact time measurement of any function call. <br/>
+    - High memory usage and some overhead for each function call.<br/>
+    + Every call is stored, so exact function tracing possible!
+  * Sampling mode: 
+    For easy "click-and-go" but coarse grained profiling.<br/>
+    - Coarse grained, only maximum of 1000 samples (theoretical) is possible, so many small            function calls will be missed.<br/>
+    + Low overhead (profiler app runs at normal speed)
+
+The "instrumenting mode" is made first (as "proof of concept"). After some time, the "sampling mode" is made separately..<br/>
+In the future, the "instrumenting mode" will be completely rebuild and integrated in the GUI of the "sampling mode".<br/>
+So the "instrumenting mode" can have some rough edges...
+
+==Please donate!==
+
+<a href='http://www.pledgie.com/campaigns/7734'><img alt='Click here to lend your support to: AsmProfiler and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/7734.png?skin_name=chrome' border='0' /></a>
+
+= Details =
+
+For more information a details of the 2 profiling modes, please take a look at the following pages:
+  * *[AsmProfilerInstrumentingMode AsmProfiler, Instrumenting mode]*
+    * [AsmProfilerInstrumentingScreenshots Some screenshots]
+    * Download latest version:   
+      * [http://asmprofiler.googlecode.com/files/AsmSamplingProfiler0.5.zip AsmProfiler v1.0.0.42]
+      * [http://asmprofiler.googlecode.com/files/ProfilerResultViewer_v10010.zip ProfilerResultViewer v1.0.0.10]
+
+  * *[AsmProfilerSamplingMode AsmProfiler, Sampling mode]*
+    * [AsmProfilerSamplingScreenshots Some screenshots]
+    * Download latest version: 
+      * [http://asmprofiler.googlecode.com/files/AsmSamplingProfiler0.5.zip AsmProfiler Sampling v0.5]
+
+==Need some help?==
+If you need some help with the AsmProfiler, or want to hire me as a profiler specialist (remote or in The Netherlands), <br/>
+please don't hesitate to e-mail me! [mailto:andre.mussche+asmprofiler@gmail.com] 

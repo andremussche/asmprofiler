@@ -1,0 +1,48 @@
+#summary New profiling session screen
+
+= Profiling screen =
+
+This is profiling session screen:<br/>
+[http://asmprofiler.googlecode.com/files/ProfilingScreen.png]
+
+For now, you can only profile a running process. To start and profile a new process will be added in the future.
+
+== Choose process ==
+
+To select a process, press the *Select process* button. The next screen will popup:<br/>
+[http://asmprofiler.googlecode.com/files/SelectProcess.png]
+
+Double click a process or select a process and press the *Profile it* button.
+
+== Start profiling ==
+After selecting a process, you can set some options and the *Start* button is enabled:<br/>
+[http://asmprofiler.googlecode.com/files/ProfilingScreen_start.png]
+
+You can set 2 options:
+  * *Sampling interval*: 
+    * 1 or more: uses _Sleep(x)_ between 2 samples, so _Sleep(1)_ gives theoretical a maximum of 1000 samples per second.
+    * 0: Continuous mode: uses _Sleep(0)_, so other threads with the same priority can do some work too, but will take continuous samples if other threads are idle. Actually a "nice" continuous mode.
+    * -1: Continuous mode without _Sleep(x)_, so it will take continuous samples, regardless of other threads. 
+_Note: use continuous sampling only on multi core and/or multi cpu systems!_
+  * *Priority*: the priority of the sampling thread.
+ 
+You can start profiling by pressing the *Start sampling* button.
+
+_Note: prepare the action you want to profile in the selected process before you *start sampling*, so you get the "cleanest" profiling as possible (without other disturbing function calls)._
+
+== Stop profiling & view results ==
+During the profiling session, you can only press the *Stop sampling* button:<br/>
+[http://asmprofiler.googlecode.com/files/ProfilingScreen_stop.png]
+
+You can also see some statistics:
+  * Number of *samples take*
+  * The actual *sample rate* (note we did not get our desired 1000 samples! This due to Windows...)
+  * The *actual interval* (future, in our case about 2ms instead 1ms)
+
+After you are done with your specific action, you can stop the profiler by pressing the * Stop sampling* button.<br/>
+The *Show results* button will become enabled:
+
+[http://asmprofiler.googlecode.com/files/ProfilingScreen_results.png]
+
+Press the *Show results* button to view the results of the profiling session.<br/>
+This will show the *[ViewProfilingResults Sampling Results]* popup.

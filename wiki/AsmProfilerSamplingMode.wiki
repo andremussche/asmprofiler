@@ -1,0 +1,21 @@
+#summary Mainscreen of the "AsmProfiler Sampling Mode".
+#labels Featured
+
+= Sampling mode =
+
+The *sampling mode* of the AsmProfiler is the easiest mode: you can profile any application with only some mouse clicks! No source code changes or recompilation needed.<br/>
+This mode will take about 500 till 1000 samples of the running process, so it gives a rough view of what's going on, and which functions takes the most time.<br/>
+To get more exact and detailed results, please use the *[AsmProfilerInstrumentingMode instrument mode]* afterwards. 
+
+= Main screen =
+
+This is the main screen of the sampling mode of AsmProfiler:
+<br/>
+[http://asmprofiler.googlecode.com/files/Mainscreen.png]
+
+== Actions ==
+
+You can choose from 1 of the next 3 actions:
+  * *[StartProfiling Start Profiling]* to start a new profiling session
+  * *[ViewProfilingResults View profiling results]* to load a previous session
+  * *[ProcessStackViewer Stack view of process]* to get a live stack view of all threads of any process

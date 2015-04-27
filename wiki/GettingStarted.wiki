@@ -1,0 +1,55 @@
+#summary Short description how to get started with the *instrumenting* profiler
+
+= Getting started with the *instrumenting* profiler =
+
+This document will explain the 2 ways how to use the *instrumenting* profiler.
+
+= Delphi, with source code, part 1 =
+
+When you have a Delphi project (with all source code):
+  * Delphi -> Project Options:
+    * Linker -> Map file = detailed
+    * Compiler -> Optimization = off
+    * Compiler -> Stack frames = on
+  * Add the following file to your project:
+    *     [http://code.google.com/p/asmprofiler/source/browse/trunk/DllVersion/_uAsmProfDllLoader.pas _uAsmProfDllLoader.pas]
+  * Add this line of code: 
+  {{{if LoadProfilerDll then ShowProfileForm;}}}
+  * Compile and Run!
+  * Read HowtoUseTheProfiler start profiling
+
+Demo source of .dpr:
+
+{{{
+program DllTestApp;
+
+uses
+  Forms,
+  Unit1 in 'Unit1.pas' {Form1},
+  _uAsmProfDllLoader in '..\DllVersion\_uAsmProfDllLoader.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+
+  if LoadProfilerDll then
+    ShowProfileForm;
+
+  Application.CreateForm(TForm1, Form1);
+  Application.Run;
+end.
+}}}
+
+(demo program: http://asmprofiler.googlecode.com/files/DllTestApp%20v1.0.1.2.zip)
+
+= Any executable =
+
+When you only have an exeutable:
+  * Start your executable
+  * Start "dllinject.exe" (ignore possible virus warning)
+  * Get the PID of your executable via Windows Task Manager or Process Exlorer
+  * Enter this number in the black command line box of dllinject
+  * Read HowtoUseTheProfiler start profiling
+
+(download link: http://asmprofiler.googlecode.com/files/AsmProfiler_inject_v10011.zip)

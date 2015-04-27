@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Under The Hood -- MSJ, May 1996</title>
+
+
+	
+
+<meta name="Description" content="Under The Hood -- MSJ, May 1996">
+	<meta http-equiv="PICS-Label" content="(PICS-1.1 &quot;http://www.rsac.org/ratingsv01.html&quot; l comment &quot;RSACi North America Server&quot; by &quot;inet@microsoft.com&quot; r (n 0 s 0 v 0 l 0))">
+	<meta name="Robots" content="all">
+	<meta name="MS.LOCALE" content="en-us">
+	<link type="text/css" rel="Stylesheet" href="UnderTheHood_TIB.aspx_files/msdnmag.css"><link type="text/css" rel="Stylesheet" href="UnderTheHood_TIB.aspx_files/msdn.css">
+	<script language="javascript" src="UnderTheHood_TIB.aspx_files/msdnmag.js"></script>
+	<script type="text/javascript" language="Javascript" src="UnderTheHood_TIB.aspx_files/menujs"></script>
+<link type="text/css" rel="Stylesheet" href="UnderTheHood_TIB.aspx_files/css.css">
+<link rel="stylesheet" type="text/css" href="UnderTheHood_TIB.aspx_files/css_002.css"><script language="JavaScript">var doImage=doImage;var TType=TType;
+function mhHover(tbl,idx,cls){var t,d;if(document.getElementById)t=document.getElementById(tbl);else t=document.all(tbl);if(t==null)return;if(t.getElementsByTagName)d=t.getElementsByTagName("TD");else d=t.all.tags("TD");if(d==null)return;if(d.length<=idx)return;d[idx].className=cls;}
+function footerjs(doc){if(doImage==null){var tt=TType==null?"PV":TType;doc.write('<layer visibility="hide"><div style="display:none"><img src="http://c.microsoft.com/trans_pixel.asp?source=www&TYPE=' + tt + '&p=msj_archive&URI=%2fmsj%2farchive%2fs2ce.aspx&GUID=1F4FC18C-F71E-47FB-8FC9-612F8EE59C61&lc=en-us" width=0 height=0 hspace=0 vspace=0 border=0 alt=""/></div></layer>');}}msvi_qllc = "en-us";msvi_qldir = "LTR";msvi_qlhost = "http://www.microsoft.com";</script><meta name="WT.sp" content="_msj_"><script language="JavaScript" src="UnderTheHood_TIB.aspx_files/broker.js"></script><link rel="stylesheet" type="text/css" href="UnderTheHood_TIB.aspx_files/ql.css"><script type="text/javascript" src="UnderTheHood_TIB.aspx_files/ql.js"></script></head><body leftmargin="0" topmargin="0" rightmargin="5" bgcolor="#ffffff">
+		
+		<!--NOINDEX_START--><script language="Javascript">
+				if (self.name == "MNPMainFrame") top.location.href = self.location.href;
+			</script><div id="msviMasthead"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td width="100%"><table border="0" cellpadding="0" cellspacing="0" height="22" width="100%"><tbody><tr><td id="msviRegionIdGraphic" bgcolor="#ffffff"></td><td bgcolor="#3568cc" width="100%"><img src="UnderTheHood_TIB.aspx_files/gradient_002.jpg" alt="*" title="" height="22" width="250"></td></tr></tbody></table></td><td id="msviGlobalToolbar" dir="ltr" align="left" bgcolor="#3568cc" height="22" nowrap="nowrap"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td id="panelTd" class="gt0" nowrap="nowrap"><a href="javascript:void(0)">Quick Links&nbsp;</a><script>document.write('<img src="/library/mnp/2/gif/ql.gif" width="11px" height="4px" alt="">');</script><img src="UnderTheHood_TIB.aspx_files/ql.gif" alt="" height="4" width="11"><div id="panelDiv" style="position: absolute; visibility: hidden; z-index: 100;"></div></td><td class="gtsep">|</td><td class="gt0" onmouseover="this.className='gt1'" onmouseout="this.className='gt0'" nowrap="nowrap"><a href="http://go.microsoft.com/?linkid=4412890">Home</a></td><td class="gtsep">|</td><td class="gt0" onmouseover="this.className='gt1'" onmouseout="this.className='gt0'" nowrap="nowrap"><a href="http://go.microsoft.com/?linkid=4412891">Worldwide</a></td><td class="msviPPSpace"></td></tr></tbody></table></td></tr></tbody></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="top"><td width="100%"><table style="" border="0" cellpadding="0" cellspacing="0" height="42" width="100%"><tbody><tr valign="top"><td id="msviBrandBanner" bgcolor="#ffffff"><a href="http://msdn.microsoft.com/"><img src="UnderTheHood_TIB.aspx_files/msdn_masthead_ltr.gif" alt="MSDN" title="" border="0" height="42" width="225"></a></td><td bgcolor="#6799ff" width="100%"><img src="UnderTheHood_TIB.aspx_files/gradient.jpg" alt="*" title="" height="42" width="250"></td></tr></tbody></table></td><td id="msviGlobalSearch" bgcolor="#6799ff"><div id="msviNoSearch"></div></td></tr></tbody></table><div id="msviLocalToolbar"><table border="0" cellpadding="0" cellspacing="0" height="19" width="100%"><tbody><tr><td id="msviHomePageLink" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/default.aspx">MSDN Home</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 2, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 2, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/developercenters/">Developer Centers</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 4, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 4, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/library/default.asp">Library</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 6, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 6, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/downloads/">Downloads</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 8, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 8, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/code/">Code Center</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 10, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 10, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/subscriptions/">Subscriptions</a></td><td><span class="ltsep">|</span></td><td class="lt0" onmouseover="mhHover('msviLocalToolbar', 12, 'lt1')" onmouseout="mhHover('msviLocalToolbar', 12, 'lt0')" nowrap="nowrap"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/worldwide.aspx">MSDN Worldwide</a></td><td width="100%"></td></tr></tbody></table></div></div>
+			<table dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody><tr valign="top">
+		<td style="overflow-x: hidden;" height="100%" width="181">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td class="mnpQuickSearch" style="background: rgb(204, 204, 204) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; color: rgb(0, 0, 0);" dir="ltr"><form style="margin: 0px;" action="http://msdn.microsoft.com/msdn-online/shared/components/mscomsearch30.aspx"><nobr><font color="#000000">Search for</font><br><input class="mnpSearchBox" id="qu" name="qu" maxlength="255" style="width: 165px;" type="text"><br><table style="margin-top: 2px;" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td class="mnpQuickSearch" style="padding: 0px;" width="100%"><select class="mnpSearchScopes" style="width: 137px;" name="SearchScope"><option value="1">All of MSDN</option><option value="2">All Library</option><option value="3">Code &amp; Downloads</option><option value="7" selected="selected">MSDN Magazine</option><option value="5">Support &amp; KB</option></select></td><td><input class="mnpSearchButton" value="Go" type="submit"><br></td></tr></tbody></table><a href="http://search.microsoft.com/search/search.aspx?View=msdn&amp;st=a" style="color: rgb(0, 0, 0);" onmouseover="style.color='#0033CC';" onmouseout="style.color='#000000';">Advanced Search</a></nobr></form></td></tr></tbody></table>
+  <div id="mnpMenuTop" class="mnpMenuTop" style="overflow-x: hidden; width: 181px;" url="/msj/archive/S2CE.aspx" dir="ltr" parent=""><div class="mnpInherit"><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/msj/default.aspx">MSJ Home</a></div><div class="mnpMenuBorder" style="width: 180px;"></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/msdnmag/find/default.aspx">Search</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;" menu="m3fd9abd6d4e6b1d47da1677743a69def"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/msj/code.aspx">Source Code</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;" menu="m0e5c80cdf8bdd73274e5171bd96f4ed9"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/msj/backissues.aspx">Back Issues</a></div><div class="mnpMenuBorder" style="width: 180px;"></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/msdnmag/Subscribe.aspx">Subscribe</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/msdnmag/service.aspx">Reader Services</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/msdnmag/write.aspx">Write to Us</a></div><div class="mnpMenuBorder" style="width: 180px;"></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/msdnmag/default.aspx">MSDN Magazine</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://www.microsoft.com/mind/default.asp">MIND Archive</a></div><div class="mnpMenuRow" style="border-color: rgb(241, 241, 241); background: rgb(241, 241, 241) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; width: 153px; overflow-x: hidden;"><img alt="*" title="" class="mnpMenuArrow" src="UnderTheHood_TIB.aspx_files/arrowLTR.gif" style="left: 166px; visibility: hidden;" border="0" height="7" width="4"><a href="http://msdn.microsoft.com/newsgroups/topic.aspx?url=/msdn-files/028/201/133/topic.xml">Magazine Newsgroup</a></div><div class="mnpMenuBorder" style="width: 180px; margin-bottom: 0px;"></div></div></div>
+  <div class="mnpAds" style="border-style: solid; border-color: rgb(153, 153, 153); border-width: 0px 1px 0px 0px; background: rgb(241, 241, 241) none repeat scroll 0%; width: 181px; height: 100%; padding-bottom: 20px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">
+    <center></center>
+  </div>
+</td>
+          <td dir="ltr" width="100%">
+        <!--NOINDEX_STOP-->
+
+<table class="downleveleyebrow" height="24" width="100%"><tbody><tr><td>
+<span id="ctl00_eb" style="color: rgb(0, 51, 153); width: 100%; height: 24px; padding-top: 4px; padding-left: 14px;"><a href="http://www.microsoft.com/msj/archive/isapi/gomsdn.asp?TARGET=/">MSDN Home</a>&nbsp;&gt;&nbsp;<a href="http://www.microsoft.com/msj/">MSJ</a></span>
+
+</td></tr></tbody></table>
+
+<table border="0" cellpadding="10" cellspacing="0"><tbody><tr><td>
+	<!----------------->
+	<!--BEGIN_CONTENT-->
+	<!----------------->
+
+
+<br>
+<font color="#000080" face="verdana, arial, helv" size="3"><b>  May 1996</b></font><p>
+<img src="UnderTheHood_TIB.aspx_files/msjheader02.gif" alt="Microsoft Systems Journal Homepage" border="0" height="33" width="399"></p><p>
+
+<img src="UnderTheHood_TIB.aspx_files/hoodlogo.gif">
+</p><p><i>Matt Pietrek is the author of </i>Windows 95 System Programming Secrets<i> (IDG Books, 1995). He works at NuMega Technologies Inc., and can be reached at 71774.362@compuserve.com.</i></p>
+<p>While Windows NT™ and Windows® 95 are quite different under the
+hood, they both share a key system data structure that many programmers
+aren't aware of. To be a bit more precise, certain fields of this data
+structure are shared. Regardless of the differences, this structure is
+used extensively, and is even accessed by compiler-generated code.
+That's right, your C++ compiler generates code to access system level
+information directly.</p>
+<p>What structure am I talking about? It goes by at least two different
+names. The Windows 95 code calls it a Thread Information Block (TIB).
+In Windows NT, it's called the Thread Environment Block (TEB). However,
+I've seen it referred to as a TIB in some Windows NT header files so,
+for the purposes of this column, I'll refer to it as a TIB.</p>
+<p>What's in a Thread Information Block that makes it so special? As
+its name implies, the data found in a TIB relates to threads, and
+there's a TIB for each thread in the system. In fields shared by
+Windows NT and Windows 95, you'll find information like a pointer to
+the thread's structured exception handler list, the location of the
+thread's stack, and the location of the thread local storage slots.
+Other fields in the TIB differ between Windows NT and Windows 95.</p>
+<p>You might be surprised to learn that the TIB didn't first appear in
+Windows NT or Windows 95. The TIB has its ancestry in OS/2, before
+Microsoft created Windows NT, and it still exists in OS/2 today. In
+fact, the OS/2 TIB shares much of the same format, and is accessed in
+the same manner as under Win32®. There's even a line in a Microsoft
+header file (NTDDK.H) that says</p>
+
+
+<pre><code> &lt;&lt; begin snippet &gt;&gt;
+//      This structure MUST MATCH OS/2 V2.0!
+&lt;&lt; end snippet &gt;&gt;</code></pre>
+
+<p>How would you get at the TIB if you were inclined to go poking
+around? It's as easy as looking at what the FS register points to. Hey!
+Didn't segments and segment registers go away in Win32? For the most
+part, that's true. However, in all Intel-based Win32 implementations
+(even the forgotten stepchild, Win32s), the FS register points to the
+TIB. Thus, all of the structure offsets that I'll detail later can be
+used as offsets into the segment pointed to by the FS register. For
+example, FS:[0] points to the structured exception handling chain,
+while FS:[2C] points to the thread's thread local storage array.</p>
+<p>I just mentioned that compilers access the TIB structure directly.
+Let's look at a small example to see this in action. This is a very
+small C program that uses structured exception handling:</p>
+
+
+<pre><code> int main()
+{
+       __try
+       {      int i = 0;
+            
+       }
+       __except( 1 )
+       {     int j = 1:   }
+              
+       
+       return 0;
+}</code></pre>
+
+<p>When compiled, the first part of the resulting code looks like this:</p>
+
+
+<pre><code> 401000:       PUSH         EBP
+401001:       MOV          EBP,ESP
+401003:       PUSH         FF
+401005:       PUSH         00404000
+40100A:       PUSH         00401140
+40100F:       MOV          EAX,FS:[00000000]
+401015:       PUSH         EAX
+401016:       MOV          DWORD PTR FS:[00000000],ESP</code></pre>
+
+<p>The thing to notice is the series of PUSH instructions. They create
+a data structure on the stack (sort of like an invisible local
+variable). The instruction at offset 0x_40100F retrieves the head of
+the structured exception handling chain out of the thread information
+block and stores it into EAX-this is where the FS:[00000000] part of
+the instruction comes from. The code then pushes the current head of
+the structured exception handling chain list onto the stack. This
+finishes the process of creating a local data structure on the stack.
+Finally, the </p>
+
+
+<pre><code> MOV DWORD PTR FS:[00000000],ESP</code></pre>
+
+<p>instruction changes the head of the structured exception handling chain to point at the newly created data structure.</p>
+<p>The key point is that Win32 compilers implicitly know about the TIB
+and generate code that accesses it. Because the compiler can't know
+which Win32 system the code will run on, you can safely assume that any
+compiler-generated code that references the FS segment uses fields
+common between Win32 platforms.</p>
+<h3><a name="sec0"></a>  Common Fields in the TIB</h3><p>You just saw
+one example of a TIB structure field that's common to all Win32
+implementations. In this section, I'll list all of the common fields,
+along with a short description. The fields that differ between Win32
+implementations are described later.</p>
+<p>There are several different header files floating around that define
+the fields of a TIB. Unfortunately, they're not always consistent with
+each other or complete. In the Windows NT DDK, you'll find a structure
+called an NT_TIB defined in NTDDK.H. In the Windows NT 3.51 service
+pack 3 SDK update, a new WINNT.H was added that also defines an NT_TIB
+structure. In addition, someone from the Windows 95 team posted online
+a snippet from an .H file that described a TIB. In my descriptions,
+I've tried to use the most descriptive name. You'll see these names in
+the TIB.H file (see <b><a href="http://www.microsoft.com/msj/archive/s2cea.htm#fig1" target="window">Figure 1</a></b>) included with the SHOWTIB program I'll present later on.</p>
+<p>The 00h DWORD pvExcept field contains a pointer to the head of the
+thread's structured exception handling chain. The chain is a linked
+list of EXCEPTION_REGISTRATION_RECORD structures (which unfortunately
+are not defined in any official .H file). For more information on the
+structured exception handling chain, you might refer to chapter 3 of my
+book "Windows 95 System Programming Secrets."</p>
+<p>The 04h DWORD pvStackUserTop field contains the linear address of
+the topmost address of the thread's stack. Put another way, at no point
+will this thread have a stack pointer value that's greater than or
+equal to the value of this field.</p>
+<p>The 08h DWORD pvStackUserBase field contains the linear address of
+the lowest committed page in the thread's user mode stack. As the
+thread uses successively lower addresses in the stack, those pages will
+be committed, and this field will be updated accordingly.</p>
+<p>The 14h DWORD pvArbitrary field is theoretically available for
+applications to use however they want. It's almost like an extra thread
+local storage slot for you to use, although I've never seen an
+application use it.</p>
+<p>The 18h DWORD ptibSelf field holds the linear address of the TIB.
+Put another way, the TIB block contains a pointer to itself. Why bother
+doing this? If the TIB's fields are used extensively, it makes sense
+for 32-bit code to read and write the TIB using regular pointers rather
+than using a segment register override (for example, by using
+FS:[xxxxxxxx]). The SHOWTIB program presented later uses this field.</p>
+<p>The 2Ch DWORD pvTLSArray field contains a pointer to the thread
+local storage (TLS) slots for the thread. For example, if you had a TLS
+index value of 4, you could take this pointer, add 10h to it ( 4 *
+sizeof(DWORD) ), and retrieve the TLS value directly. Knowing that this
+field points to the thread's TLS slots, you could write your own
+versions of TlsSetValue and TlsGetValue easily. If you use _
+_declspec(thread) variables in your code, check out the ASM code
+emitted by your compiler. You'll find that it uses this field.</p>
+<p>The location of the TLS slots is quite different between Windows NT
+and Windows 95. In Windows NT, this field contains a null pointer until
+the first time a TLS slot is used in the thread, then the system
+allocates memory for the TLS slots out of the default process heap. (In
+Windows NT, a buffer overrun of a HeapAlloc'ed block could trash your
+TLS data.) Under Windows 95, this field always points to the TLS slots
+that are kept as part of the Ring 3 thread database.</p>
+<h3><a name="sec1"></a>  Windows NT TIB fields</h3><p>The meaning of
+some TIB data differs depending on whether you're running under Windows
+NT or Windows 95. This section of the OS/2 subsystem-Windows NT support
+running OS/2 1.X applications. For regular Win32 apps, this field
+appears to always be zero.</p>
+<p>The 10h DWORD FiberData field's meaning depends on what version of
+Windows NT the thread is running. In the Windows NT 3.51 service pack 3
+SDK update, WINNT.H describes this field as pointing to fiber data.
+Fibers are described in the accompanying HLP file as lightweight
+threads that are scheduled manually. Prior to the service pack update,
+this field was named "Version". Presumably this means what version of
+the system the thread expects to be running on, but I was unable to
+make sense of the values in this field.</p>
+<p>The 20h DWORD processID field holds the process ID of the thread.
+The GetCurrentProcessId function in Windows NT 3.51 simply returns
+whatever is in this field.</p>
+<p>The 24h DWORD threadID field holds the thread's ID. The
+GetCurrentThreadId function in Windows NT 3.51 returns the value in
+this field.</p>
+<p>The segment pointed at by the Windows NT TIB actually extends far
+beyond the fields that I've described here. I've only mentioned the
+fields that fall within the first 34h bytes (the size of a Windows 95
+TIB).</p>
+<h3><a name="sec2"></a>  Windows 95 TIB fields</h3><p>While the Windows
+NT TIB fields are relatively sedate, the Windows 95 TIB contains a fair
+amount of intriguing information. This section covers fields specific
+to the Windows 95 TIB.</p>
+<p>The 0CH WORD pvTDB contains the task database selector for the task
+associated with the thread. The task database is a segment allocated
+from the 16-bit global heap, and the handle is known as an HTASK. In
+Windows 95, every process (even a Win32 process) has a task database
+created for it.</p>
+<p>The 0EH WORD pvThunkSS field contains the selector that Windows 95
+uses as the 16-bit stack selector when a thread thunks from 32-bit code
+to 16-bit code.</p>
+<p>The 1CH WORD TIBFlags field is intended to hold various bit flags.
+The only known value is TIB_WIN32 (that is, 1). If the low bit of this
+value is set, it's a 32-bit thread, otherwise it's a thread from a
+16-bit process.</p>
+<p>The 1Eh WORD Win16MutexCount field is related to the thread's
+ownership of the Win16Mutex, which is a global critical section that
+only allows one thread at a time to be in 16-bit code. Normally, this
+field's value is -1, which indicates that the thread doesn't own the
+Win16Mutex. As the thread enters and leaves thunking code, the value of
+this field is incremented and decremented accordingly.</p>
+<p>The 20h DWORD DebugContext field normally contains the value zero.
+However, when you're debugging the thread's process, this field
+contains a pointer to a structure that contains register values and is
+similar to, but not the same as, the CONTEXT structure defined in
+WINNT.H.</p>
+<p>The 24h DWORD pCurrentPriority field points to a DWORD containing
+the thread's scheduling priority. This will be some value between zero
+(lowest) and 31 (highest). The DWORD pointed to by this field is above
+3GB in linear memory, which places it in VxD land. This makes sense, as
+threads are scheduled by the ring 0 Virtual Machine Manager (VMM). For
+normal priority threads, the priority DWORD will contain 9.</p>
+<p>The 28h DWORD pvQueue field contains the message queue selector
+assigned to the thread. Message queues are the means by which window
+messages get to the appropriate windows. In Windows 95, each thread can
+have its own message queue, but it is initially created without one.
+Therefore, this field may contain zero.</p>
+<p>The 30h PVOID* pProcess field contains a linear address for the
+process database representing the process that owns the thread.
+However, this is not the same as a process handle or process ID.</p>
+<h3><a name="sec3"></a>  Some Random Notes on TIBs</h3><p>As I was
+experimenting with TIBs for this column, I came across some tidbits of
+information worth passing on. First, in Windows 95, at offset 52h in
+each task database segment, you'll find the TIB selector for the
+primary thread in the process. At offset 54h in the task database,
+you'll find the linear address of the TIB. This is particularly
+interesting in that task databases are used by the 16-bit components of
+Windows 95. It appears that the 16-bit components may occasionally
+access thread-specific data in the TIB.</p>
+<p>I also noticed the different uses of the FS register between Windows
+NT and Windows 95. Under Windows NT, the FS register is always the same
+for each thread's TIB. This implies that the linear address for the FS
+selector has to change whenever a thread switch occurs. In contrast,
+Windows 95 dedicates a different selector for each TIB (and hence, for
+each thread). The linear address of a Windows 95 TIB selector doesn't
+change. I'll let you guess which method is kinder to system resources.</p>
+<h3><a name="sec4"></a>  The SHOWTIB program</h3><p>To bring the TIB to life, I wrote the SHOWTIB program (see <b>Figure 1</b>).
+SHOWTIB is a simple command-line program with two goals. The first is
+to create one or more threads. (You specify the actual number of
+threads on the command line. For example, "SHOWTIB 5" tells SHOWTIB to
+spin off five threads and display their TIBs.) The second goal is to
+display the various fields of each thread's TIB structure once all the
+threads are running. I show only the TIB structures for threads created
+by the primary thread, not for the primary thread itself.</p>
+<p>In displaying the TIB for each thread, SHOWTIB first displays the
+fields common to all Win32 operating systems, then decides whether it's
+running on Windows NT or Windows 95. Depending on which system is
+running, SHOWTIB displays specific fields in the TIB relevant to the
+operating system. To make each TIB display come out coherent and in one
+piece, the DisplayTIB function guards the display code with a critical
+section.</p>
+<p>There are two interesting pieces of code in SHOWTIB.CPP. Near the
+start of the DisplayTIB function, the code uses a bit of in-line
+assembler to grab the field at offset 18h in the TIB and stash it away
+into a pointer. Offset 18h is the linear address of the TIB. I did this
+so I could access the rest of the TIB with a regular pointer. The
+alternative would have meant using in-line assembler and FS segment
+overrides to retrieve all of the values. Win32 compilers simply don't
+have a way to let you easily read from any segment other than the data
+segment (the DS register).</p>
+<p>The second interesting piece of code is near the end of main. After
+creating all the threads and storing all the corresponding thread
+handles into an array, I call WaitForMultipleObjects, passing in the
+array of thread handles. If I didn't do this, the primary thread could
+return from the main routine and call the exit function before the
+worker-bee threads had terminated. The result would be an incomplete
+display of all the various TIBs.</p>
+<p>While Windows NT and Windows 95 are quite different under the hood,
+the TIB is one of the few areas you can rely on to be the same. This
+isn't a coincidence; since threading is such an integral part of both
+operating systems, it's only natural that some common method of
+supplying thread-specific information would be needed. The TIB is not
+described in any official documentation other than .H files.
+Nonetheless, it's an integral part of the Win32 specification that all
+Win32 implementations must conform to.</p>
+<p>Have a question about programming in Windows? You can mail it
+directly to Under The Hood, Microsoft Systems Journal, 825 Eighth
+Avenue, 18th Floor, New York, New York 10019, or send it to MSJ (re:
+Under The Hood) via:</p>
+
+<table><colgroup><col valign="top" width="131"><col valign="top" width="184"></colgroup><tbody><tr><td valign="top"><p>Internet:</p></td><td valign="top"><p>Matt Pietrik<br>71774.362@compuserve.com</p>
+<p>Eric Maffei<br>ericm@microsoft.com</p></td></tr></tbody></table>
+<p>
+
+<i>From the May 1996 issue of Microsoft Systems Journal.</i>
+<!--FOOTER_START-->
+
+<!--FOOTER_END-->
+
+	<!----------------->
+	<!--END_CONTENT-->
+	<!----------------->
+		</p></td></tr></tbody></table>
+					</td>
+		
+				</tr>
+			</tbody></table>
+		<!--NOINDEX_START-->
+<br style="overflow: hidden; line-height: 1px;" clear="all"><table id="msviFooter" cellpadding="0" cellspacing="0" width="100%"><tbody><tr valign="bottom"><td id="msviFooter2" style=""><div id="msviLocalFooter"><nobr><a href="http://go.microsoft.com/?linkid=317027" target="_top">Manage Your Profile</a> |</nobr><wbr><nobr><a href="http://www.microsoft.com/legal/" target="_parent">Legal</a> |</nobr><wbr><nobr><a href="http://go.microsoft.com/?linkid=2028439" target="_parent">Contact us</a> |</nobr><wbr><nobr><a href="http://www.microsoft.com/isapi/gomsdn.asp?TARGET=/flash/" target="_parent">MSDN Flash Newsletter</a></nobr></div><div id="msviGlobalFooter"><span dir="ltr">© 2007 Microsoft Corporation. All rights reserved.&nbsp;</span><nobr><a href="http://go.microsoft.com/?linkid=4412892" target="_parent">Terms of Use</a> |</nobr><wbr><nobr><a href="http://go.microsoft.com/?linkid=4412893" target="_parent">Trademarks</a> |</nobr><wbr><nobr><a href="http://go.microsoft.com/?linkid=4412894" target="_parent">Privacy Statement</a></nobr></div></td><td bgcolor="#669aff" width="105"><img src="UnderTheHood_TIB.aspx_files/text.jpg" alt="Microsoft" title="" border="0" height="29" width="105"></td></tr></tbody></table><div style="display: none;"><script type="text/javascript">var gDomain="m.webtrends.com";var gDcsId="dcsjwb9vb00000c932fd0rjc7_5p3t";var gFpc="WT_FPC";if(document.cookie.indexOf(gFpc+"=")==-1){document.write("<SCR"+"IPT TYPE='text/javascript' SRC='"+"http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+"/"+gDcsId+"/wtid.js"+"'><\/SCR"+"IPT>");}</script><script src="UnderTheHood_TIB.aspx_files/wt.js" type="text/javascript"></script><noscript><img
+border="0" name="DCSIMG" width="1" height="1"
+src="http://m.webtrends.com/dcsjwb9vb00000c932fd0rjc7_5p3t/njs.gif?dcsuri=/nojavascript&WT.js=No"/></noscript></div><layer visibility="hide"></layer><div style="display: none;"><img alt="" src="UnderTheHood_TIB.aspx_files/trans_pixel.gif" border="0" height="0" hspace="0" vspace="0" width="0"></div>
+	</body></html>

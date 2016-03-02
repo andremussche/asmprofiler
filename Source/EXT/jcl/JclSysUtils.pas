@@ -2747,7 +2747,7 @@ end;
 
 procedure InternalExecuteReadPipe(var PipeInfo: TPipeInfo; var Overlapped: TOverlapped);
 var
-  NullDWORD: PDWORD;
+  NullDWORD: ^Cardinal;
   Res: DWORD;
 begin
   NullDWORD := nil;

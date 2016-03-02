@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
   Dialogs, StdCtrls, ExtCtrls, Buttons, ActnList,
   mcProcessSampler, mcSamplingResult, uResultTypes,
-  ResultsDetailedViewFrame;
+  ResultsDetailedViewFrame, System.Actions;
 
 type
   TframSamplingResults = class(TFrame)

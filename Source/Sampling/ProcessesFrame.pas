@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
-  Dialogs, StdCtrls, ExtCtrls, Buttons, ActnList;
+  Dialogs, StdCtrls, ExtCtrls, Buttons, ActnList, System.Actions;
 
 type
   TLiveViewNotify = procedure(aProcessId: Integer) of object;
@@ -32,11 +32,9 @@ type
   private
     FOnProfileItClick: TProfileNotify;
     FOnLiveViewClick: TLiveViewNotify;
-    { Private declarations }
   protected
     procedure ProfileItClicked(aProcessId: Integer);
   public
-    { Public declarations }
     procedure AfterConstruction;override;
 
     property OnLiveViewClick: TLiveViewNotify read FOnLiveViewClick write FOnLiveViewClick;

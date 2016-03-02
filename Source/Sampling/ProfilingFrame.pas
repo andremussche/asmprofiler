@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, 
-  Dialogs, StdCtrls, mcProcessSampler, ExtCtrls, Spin, Buttons, ActnList, mcSamplingThread, mcSamplingResult;
+  Dialogs, StdCtrls, mcProcessSampler, ExtCtrls, Spin, Buttons, ActnList, mcSamplingThread, mcSamplingResult,
+  System.Actions;
 
 type
   TResultsNotify = procedure(aSamplingThread: TSamplingThread; aSamplingResult: TSamplingResult = nil) of object;
@@ -53,6 +54,8 @@ type
     Label10: TLabel;
     edtParams: TEdit;
     btnStopProcess: TBitBtn;
+    chkSampleWhenUIisBusy: TCheckBox;
+    edtUIWaitTime: TSpinEdit;
     procedure actStartExecute(Sender: TObject);
     procedure actStopExecute(Sender: TObject);
     procedure actResultsExecute(Sender: TObject);
@@ -62,18 +65,18 @@ type
     procedure BitBtn5Click(Sender: TObject);
     procedure btnStartNowClick(Sender: TObject);
     procedure btnStopProcessClick(Sender: TObject);
+    procedure edtUIWaitTimeChange(Sender: TObject);
+    procedure chkSampleWhenUIisBusyClick(Sender: TObject);
   private
     FProcessObject: TProcessSampler;
     FOnResultsClick: TResultsNotify;
     procedure SetProcessObject(const Value: TProcessSampler);
-    { Private declarations }
   protected
     FSamplingThread: TSamplingThread;
     FSamplingResult : TSamplingResult;
     FPrevSampleCount: Integer;
     procedure ProfileItClicked(aProcessId: Integer);
   public
-    { Public declarations }
     procedure  AfterConstruction;override;
     destructor Destroy; override;
 
@@ -137,6 +140,9 @@ begin
   FSamplingThread.ProcessObject    := ProcessObject;
   FSamplingThread.SamplingInterval := edtSamplingInterval.Value; //default 1 ms
   FSamplingThread.Priority         := TThreadPriority(cmbxPrio.ItemIndex);
+  FSamplingThread.OnlySampleWhenUIisBusy := chkSampleWhenUIisBusy.Checked;
+  FSamplingThread.UIbusyWaitTimeMsec     := edtUIWaitTime.Value;
+
   FSamplingThread.Start;
 
   Timer1.Enabled := True;
@@ -210,10 +216,22 @@ begin
   end;
 end;
 
+procedure TframProfiling.chkSampleWhenUIisBusyClick(Sender: TObject);
+begin
+  if FSamplingThread <> nil then
+    FSamplingThread.OnlySampleWhenUIisBusy := chkSampleWhenUIisBusy.Checked;
+end;
+
 destructor TframProfiling.Destroy;
 begin
   ProcessObject.Free;
   inherited;
+end;
+
+procedure TframProfiling.edtUIWaitTimeChange(Sender: TObject);
+begin
+  if FSamplingThread <> nil then
+    FSamplingThread.UIbusyWaitTimeMsec     := edtUIWaitTime.Value;
 end;
 
 procedure TframProfiling.btnSelectProcessClick(Sender: TObject);

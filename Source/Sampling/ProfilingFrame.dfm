@@ -203,7 +203,7 @@ object framProfiling: TframProfiling
     Left = 0
     Top = 236
     Width = 618
-    Height = 67
+    Height = 93
     Align = alTop
     Caption = ' Options '
     Font.Charset = DEFAULT_CHARSET
@@ -217,7 +217,7 @@ object framProfiling: TframProfiling
       Left = 2
       Top = 15
       Width = 614
-      Height = 50
+      Height = 76
       Align = alClient
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -289,11 +289,31 @@ object framProfiling: TframProfiling
         Style = csDropDownList
         TabOrder = 1
       end
+      object chkSampleWhenUIisBusy: TCheckBox
+        Left = 100
+        Top = 52
+        Width = 381
+        Height = 17
+        Caption = 'Only sample when UI is busy for more than                     ms'
+        TabOrder = 2
+        OnClick = chkSampleWhenUIisBusyClick
+      end
+      object edtUIWaitTime: TSpinEdit
+        Left = 326
+        Top = 50
+        Width = 53
+        Height = 22
+        MaxValue = 1000
+        MinValue = -1
+        TabOrder = 3
+        Value = 50
+        OnChange = edtUIWaitTimeChange
+      end
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 317
+    Top = 343
     Width = 618
     Height = 35
     Align = alTop
@@ -432,7 +452,7 @@ object framProfiling: TframProfiling
   end
   object Panel2: TPanel
     Left = 0
-    Top = 426
+    Top = 452
     Width = 618
     Height = 14
     Align = alTop
@@ -640,7 +660,7 @@ object framProfiling: TframProfiling
   end
   object GroupBox4: TGroupBox
     Left = 0
-    Top = 352
+    Top = 378
     Width = 618
     Height = 74
     Align = alTop
@@ -734,7 +754,7 @@ object framProfiling: TframProfiling
   end
   object Panel3: TPanel
     Left = 0
-    Top = 303
+    Top = 329
     Width = 618
     Height = 14
     Align = alTop

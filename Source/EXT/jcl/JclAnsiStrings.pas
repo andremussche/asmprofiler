@@ -2673,7 +2673,7 @@ begin
 
   while (Current <> nil) and (Current^ <> #0) do
   begin
-    Current := AnsiStrPos(PAnsiChar(Current), PAnsiChar(SubStr));
+    Current := system.AnsiStrings.AnsiStrPos(PAnsiChar(Current), PAnsiChar(SubStr));
     if Current <> nil then
     begin
       Last := Current;
@@ -2918,7 +2918,7 @@ begin
     SPI := SP;
     Inc(SPI, Index);
     Dec(SPI);
-    SPI := StrPos(SPI, SubP);
+    SPI := System.AnsiStrings.StrPos(SPI, SubP);
     if SPI <> nil then
       Result := SPI - SP + 1
     else
@@ -3165,7 +3165,7 @@ begin
     {$ELSE ~SUPPORTS_UNICODE}
     List[I] := StrAlloc(Length(S) + SizeOf(AnsiChar));
     {$ENDIF ~SUPPORTS_UNICODE}
-    StrPCopy(List[I], S);
+    System.AnsiStrings.StrPCopy(List[I], S);
   end;
   List[Source.Count] := nil;
   Move(List[0], Dest^, (Source.Count + 1) * SizeOf(PAnsiChar));
@@ -3216,7 +3216,7 @@ begin
     SetLength(List, Count);
     Move(Dest^, List[0], Count * SizeOf(PAnsiChar));
     for I := 0 to Count - 1 do
-      StrDispose(List[I]);
+      System.AnsiStrings.StrDispose(List[I]);
     FreeMem(Dest, (Count + 1) * SizeOf(PAnsiChar));
     Dest := nil;
   end;
@@ -3321,12 +3321,12 @@ begin
     if Source[I] = '' then
       raise EJclAnsiStringError.CreateRes(@RsInvalidEmptyStringItem)
     else
-      Inc(TotalLength, StrLen(PAnsiChar(AnsiString(Source[I]))) + 1);
+      Inc(TotalLength, System.AnsiStrings.StrLen(PAnsiChar(AnsiString(Source[I]))) + 1);
   AllocateMultiSz(Dest, TotalLength);
   P := Dest;
   for I := 0 to Source.Count - 1 do
   begin
-    P := StrECopy(P, PAnsiChar(AnsiString(Source[I])));
+    P := System.AnsiStrings.StrECopy(P, PAnsiChar(AnsiString(Source[I])));
     Inc(P);
   end;
   P^ := #0;
@@ -3347,7 +3347,7 @@ begin
       while P^ <> #0 do
       begin
         Dest.Add(P);
-        P := StrEnd(P);
+        P := System.AnsiStrings.StrEnd(P);
         Inc(P);
       end;
     end;
@@ -3365,8 +3365,8 @@ begin
   begin
     P := Source;
     repeat
-      Inc(Result, StrLen(P) + 1);
-      P := StrEnd(P);
+      Inc(Result, System.AnsiStrings.StrLen(P) + 1);
+      P := System.AnsiStrings.StrEnd(P);
       Inc(P);
     until P^ = #0;
     Inc(Result);
@@ -4018,9 +4018,9 @@ begin
     begin
       Result := StrCompare(S1,S2);
       if CaseInsensitive then
-        Result := AnsiStrLIComp(PAnsiChar(@S1[Cur1]), PAnsiChar(@S2[Cur2]), 1)
+        Result := System.AnsiStrings.AnsiStrLIComp(PAnsiChar(@S1[Cur1]), PAnsiChar(@S2[Cur2]), 1)
       else
-        Result := AnsiStrLComp(PAnsiChar(@S1[Cur1]), PAnsiChar(@S2[Cur2]), 1);
+        Result := System.AnsiStrings.AnsiStrLComp(PAnsiChar(@S1[Cur1]), PAnsiChar(@S2[Cur2]), 1);
       Inc(Cur1);
       Inc(Cur2);
     end;

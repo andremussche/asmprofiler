@@ -746,6 +746,10 @@
       {$UNDEF UNKNOWN_COMPILER_VERSION}
     {$ENDIF VER220}
 
+{$if compilerversion > 23}
+  {$define VER230}
+{$endif}
+
     {$IFDEF VER230} // RAD Studio XE2
       {$DEFINE BDS}
       {$DEFINE BDS9}

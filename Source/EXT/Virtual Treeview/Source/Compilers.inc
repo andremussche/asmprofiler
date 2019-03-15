@@ -554,6 +554,10 @@
 
 {$endif} 
 
+{$if compilerversion > 13}
+  {$define COMPILER_13}
+{$endif}
+
 
 {$ifdef COMPILER_13}
   {$define COMPILER_1_UP}

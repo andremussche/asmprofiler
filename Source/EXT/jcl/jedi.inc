@@ -716,10 +716,6 @@
       {$UNDEF UNKNOWN_COMPILER_VERSION}
     {$ENDIF VER200}
 
-{$if compilerversion > 23}
-  {$define VER210}
-{$endif}
-
     {$IFDEF VER210} // RAD Studio 2010
       {$DEFINE BDS}
       {$DEFINE BDS7}

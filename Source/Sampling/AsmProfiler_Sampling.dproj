@@ -46,7 +46,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <DCC_ExeOutput>.</DCC_ExeOutput>
+        <DCC_ExeOutput>..\..\Release</DCC_ExeOutput>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>
         <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -89,9 +89,8 @@
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <DCC_ExeOutput>.</DCC_ExeOutput>
-        <VerInfo_Build>8</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=A. Mussche;FileDescription=AsmProfiler (sampling mode);FileVersion=1.1.6.8;InternalName=;LegalCopyright=2007-2016, andre.mussche@gmail.com;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Build>15</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=A. Mussche;FileDescription=AsmProfiler (sampling mode);FileVersion=1.1.6.15;InternalName=;LegalCopyright=2007-2016, andre.mussche@gmail.com;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
@@ -220,17 +219,10 @@
                     <VersionInfoKeys Name="Comments"/>
                 </VersionInfoKeys>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBP1620.bpl">ReportBuilder Professional</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBU1620.bpl">ReportBuilder Sample Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclDAD1620.bpl">ReportBuilder Data Access Environment</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBBDE1620.bpl">ReportBuilder Data Access for BDE</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBADO1620.bpl">ReportBuilder Data Access for ADO</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBC1620.bpl">ReportBuilder TeeChart 9 Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBIBE1620.bpl">ReportBuilder Data Access for Interbase Express</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBDBE1620.bpl">ReportBuilder Data Access for dbExpress</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBFireDAC1620.bpl">ReportBuilder Data Access for FireDAC</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="D:\PlasticDirs\Shared\BPL\UltrawareBerlin10_1.bpl">Ultraware XE3 componenten</Excluded_Packages>
+                    <Excluded_Packages Name="D:\delphi3\DelphiXE10\Shared\BPL\UltrawareDevExpressBerlin10_1.bpl">File D:\delphi3\DelphiXE10\Shared\BPL\UltrawareDevExpressBerlin10_1.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

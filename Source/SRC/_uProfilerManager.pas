@@ -1079,6 +1079,7 @@ begin
   end;
   SetLength(FProfileTimes, 0);
   ProfileTimesCount := 0;
+  inherited;
 end;
 
 procedure TProfileRun.LoadFromFile(const aFile:string);

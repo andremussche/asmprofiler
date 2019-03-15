@@ -3,7 +3,7 @@
         <ProjectGuid>{0A73E7D4-DA98-40E1-AFDF-631B110A7CD3}</ProjectGuid>
         <MainSource>ViewMinidump.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <TargetedPlatforms>1</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -47,7 +47,7 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_DcuOutput>.\dcu</DCC_DcuOutput>
-        <DCC_ExeOutput>.</DCC_ExeOutput>
+        <DCC_ExeOutput>..\..\Release</DCC_ExeOutput>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_UnitSearchPath>..\EXT\win32api\;..\..\Source\EXT\win32api\;..\EXT\jcl\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_F>false</DCC_F>
@@ -87,6 +87,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
@@ -98,7 +99,6 @@
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <BT_BuildType>Debug</BT_BuildType>
-        <DCC_UnitSearchPath>..\EXT\win32api\;..\..\Source\EXT\win32api\;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
     <ItemGroup>
@@ -169,17 +169,10 @@
                     <VersionInfoKeys Name="CFBundleExecutable"/>
                 </VersionInfoKeys>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBP1620.bpl">ReportBuilder Professional</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBU1620.bpl">ReportBuilder Sample Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclDAD1620.bpl">ReportBuilder Data Access Environment</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBBDE1620.bpl">ReportBuilder Data Access for BDE</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBADO1620.bpl">ReportBuilder Data Access for ADO</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBC1620.bpl">ReportBuilder TeeChart 9 Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBIBE1620.bpl">ReportBuilder Data Access for Interbase Express</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBDBE1620.bpl">ReportBuilder Data Access for dbExpress</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDS)\RBuilder\Lib\Win32\dclRBFireDAC1620.bpl">ReportBuilder Data Access for FireDAC</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="D:\PlasticDirs\Shared\BPL\UltrawareBerlin10_1.bpl">Ultraware XE3 componenten</Excluded_Packages>
+                    <Excluded_Packages Name="D:\delphi3\DelphiXE10\Shared\BPL\UltrawareDevExpressBerlin10_1.bpl">File D:\delphi3\DelphiXE10\Shared\BPL\UltrawareDevExpressBerlin10_1.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Platforms>

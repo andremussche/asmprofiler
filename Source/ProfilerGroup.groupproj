@@ -3,9 +3,6 @@
         <ProjectGuid>{C56BDA1B-42BB-43A4-BCFF-75648084AB61}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="ProfilerResultViewer\ProfilerResultViewer.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="DllVersion\AsmProfiler.dproj">
             <Dependencies/>
         </Projects>
@@ -13,6 +10,9 @@
             <Dependencies/>
         </Projects>
         <Projects Include="MiniDumpReader\ViewMinidump.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ProfilerResultViewer\ProfilerResultViewer.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -23,15 +23,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="ProfilerResultViewer">
-        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj"/>
-    </Target>
-    <Target Name="ProfilerResultViewer:Clean">
-        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="ProfilerResultViewer:Make">
-        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj" Targets="Make"/>
-    </Target>
     <Target Name="AsmProfiler">
         <MSBuild Projects="DllVersion\AsmProfiler.dproj"/>
     </Target>
@@ -59,14 +50,23 @@
     <Target Name="ViewMinidump:Make">
         <MSBuild Projects="MiniDumpReader\ViewMinidump.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ProfilerResultViewer">
+        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj"/>
+    </Target>
+    <Target Name="ProfilerResultViewer:Clean">
+        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ProfilerResultViewer:Make">
+        <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="ProfilerResultViewer;AsmProfiler;AsmProfiler_Sampling;ViewMinidump"/>
+        <CallTarget Targets="AsmProfiler;AsmProfiler_Sampling;ViewMinidump;ProfilerResultViewer"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ProfilerResultViewer:Clean;AsmProfiler:Clean;AsmProfiler_Sampling:Clean;ViewMinidump:Clean"/>
+        <CallTarget Targets="AsmProfiler:Clean;AsmProfiler_Sampling:Clean;ViewMinidump:Clean;ProfilerResultViewer:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ProfilerResultViewer:Make;AsmProfiler:Make;AsmProfiler_Sampling:Make;ViewMinidump:Make"/>
+        <CallTarget Targets="AsmProfiler:Make;AsmProfiler_Sampling:Make;ViewMinidump:Make;ProfilerResultViewer:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

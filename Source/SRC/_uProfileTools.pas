@@ -9,6 +9,8 @@ interface
   function GetClockSpeed: Extended;
   function ClockTicks: Int64;inline;
 
+  function CheckASLR(const FileName: string): Boolean;
+
 implementation
 
 uses
@@ -144,5 +146,75 @@ begin
   end;
 end;
 *)
+
+
+{************************************
+* Coded by Agmcz                    *
+* Hints by naquadria                *
+* Date: 2018-01-07                  *
+************************************}
+
+const
+  IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE = $0040;
+  IMAGE_DIRECTORY_ENTRY_BASERELOC = 5;
+
+function CheckASLR(const FileName: string): Boolean;
+var
+  hFile: THandle;
+  hMapping: DWORD;
+  pMap: Pointer;
+  dwSize: DWORD;
+  IDH: PImageDosHeader;
+  INH: PImageNtHeaders;
+  ISH: PImageSectionHeader;
+  n: Word;
+  dwRelocAddr, dwRelocSize: DWORD;
+begin
+  Result := False;
+  hFile := CreateFile(PChar(FileName), GENERIC_READ, FILE_SHARE_READ or FILE_SHARE_WRITE, nil, OPEN_EXISTING, 0, 0);
+  if hFile <> INVALID_HANDLE_VALUE then
+  begin
+    dwSize := GetFileSize(hFile, nil);
+    hMapping := CreateFileMapping(hFile, nil, PAGE_READONLY, 0, dwSize, nil);
+    if hMapping <> 0 then
+    begin
+      pMap := MapViewOfFile(hMapping, FILE_MAP_READ, 0, 0, 0);
+      if pMap <> nil then
+      begin
+        IDH := PImageDosHeader(pMap);
+        if IDH.e_magic = IMAGE_DOS_SIGNATURE then
+        begin
+          INH := PImageNtHeaders(DWORD(pMap) + LongWord(IDH._lfanew));
+          if INH.Signature = IMAGE_NT_SIGNATURE then
+          begin
+            if (INH.OptionalHeader.DllCharacteristics and IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE) = IMAGE_DLLCHARACTERISTICS_DYNAMIC_BASE then
+            begin
+              ISH := PImageSectionHeader(DWORD(pMap) + LongWord(IDH._lfanew) + SizeOf(DWORD) + SizeOf(INH.FileHeader) + INH.FileHeader.SizeOfOptionalHeader);
+              dwRelocAddr := INH.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].VirtualAddress;
+              dwRelocSize := INH.OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC].Size;
+              if (dwRelocAddr <> 0) and (dwRelocSize <> 0) then
+              begin
+                for n := 0 to INH.FileHeader.NumberOfSections - 1 do
+                begin
+                  if ISH.VirtualAddress = dwRelocAddr then
+                  begin
+                    if (ISH.Misc.VirtualSize <> 0) and  (ISH.PointerToRawData <> 0) and (ISH.SizeOfRawData <> 0) then
+                      Result := True;
+                    Break;
+                  end;
+                  Inc(ISH);
+                end;
+              end;
+            end;
+          end;
+        end;
+        UnmapViewOfFile(pMap);
+      end;
+      CloseHandle(hMapping);
+    end;
+    CloseHandle(hFile);
+  end;
+end;
+
 
 end.

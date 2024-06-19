@@ -5,8 +5,8 @@ uses
   Forms,
   Unit1 in 'Unit1.pas' {Form1},
   _uTestFunctions in '..\ProfTestApp\_uTestFunctions.pas',
-  _uAsmProfDllInterface in '..\DllVersion\_uAsmProfDllInterface.pas',
-  _uAsmProfDllLoader in '..\DllVersion\_uAsmProfDllLoader.pas';
+  _uAsmProfDllInterface in '..\..\DllVersion\_uAsmProfDllInterface.pas',
+  _uAsmProfDllLoader in '..\..\DllVersion\_uAsmProfDllLoader.pas';
 
 //_uAsmProfDllInterface in '_uAsmProfDllInterface.pas',
   //_uAsmProfDllLoader in '_uAsmProfDllLoader.pas',

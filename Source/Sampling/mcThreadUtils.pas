@@ -467,7 +467,7 @@ function GetCurrentContext: temp;
 asm
 //@Label:
   mov [result.Ebp], ebx
-  mov [result.Esp], esp
+  mov [result.&Esp], esp
   //mov ax, @@Label
   //call get_eip
   mov [result.Eip], eax;

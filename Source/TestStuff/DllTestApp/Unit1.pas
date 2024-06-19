@@ -61,7 +61,7 @@ uses _uAsmProfDllInterface,
 
 procedure TForm1.btnLoadDllClick(Sender: TObject);
 begin
-  hDll := LoadLibrary('..\DllVersion\AsmProfiler.dll');
+ hDll := LoadLibrary('..\..\..\DllVersion\Release\AsmProfiler.dll');
   if hDll <= 0 then
     hDll := LoadLibrary('AsmProfiler.dll');
 

@@ -929,6 +929,9 @@ procedure InitializeProfiling;
 var
   i:integer;
 begin
+  if CheckASLR(paramstr(0)) then
+    raise Exception.Create('ASLR detected: cannot continue');
+
   //AddTerminateProc(TerminateProc);
   //if forms.Application = nil then sleep(0);
 

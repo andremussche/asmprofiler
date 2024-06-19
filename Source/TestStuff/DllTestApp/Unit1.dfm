@@ -10,13 +10,11 @@ object Form1: TForm1
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   DesignSize = (
     641
     310)
-  PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
     Left = 8
@@ -44,9 +42,7 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Load dll'
-    DoubleBuffered = True
     Enabled = False
-    ParentDoubleBuffered = False
     TabOrder = 0
     Visible = False
     OnClick = btnLoadDllClick
@@ -57,9 +53,7 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'Show profiler'
-    DoubleBuffered = True
     Enabled = False
-    ParentDoubleBuffered = False
     TabOrder = 1
     Visible = False
     OnClick = btnShowProfilerClick
@@ -70,9 +64,7 @@ object Form1: TForm1
     Width = 97
     Height = 25
     Caption = 'Execute function'
-    DoubleBuffered = True
     Enabled = False
-    ParentDoubleBuffered = False
     TabOrder = 3
     Visible = False
     OnClick = btnExecuteFunctionClick
@@ -123,9 +115,7 @@ object Form1: TForm1
     Width = 75
     Height = 25
     Caption = 'BitBtn1'
-    DoubleBuffered = True
     Enabled = False
-    ParentDoubleBuffered = False
     TabOrder = 8
     Visible = False
     OnClick = BitBtn1Click
@@ -136,9 +126,7 @@ object Form1: TForm1
     Width = 121
     Height = 25
     Caption = 'Add custom function'
-    DoubleBuffered = True
     Enabled = False
-    ParentDoubleBuffered = False
     TabOrder = 2
     Visible = False
     OnClick = btnAddFunctionClick

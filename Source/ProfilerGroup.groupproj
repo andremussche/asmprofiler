@@ -15,6 +15,9 @@
         <Projects Include="ProfilerResultViewer\ProfilerResultViewer.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="TestStuff\DllTestApp\DllTestApp.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="ProfilerResultViewer:Make">
         <MSBuild Projects="ProfilerResultViewer\ProfilerResultViewer.dproj" Targets="Make"/>
     </Target>
+    <Target Name="DllTestApp">
+        <MSBuild Projects="TestStuff\DllTestApp\DllTestApp.dproj"/>
+    </Target>
+    <Target Name="DllTestApp:Clean">
+        <MSBuild Projects="TestStuff\DllTestApp\DllTestApp.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DllTestApp:Make">
+        <MSBuild Projects="TestStuff\DllTestApp\DllTestApp.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="AsmProfiler;AsmProfiler_Sampling;ViewMinidump;ProfilerResultViewer"/>
+        <CallTarget Targets="AsmProfiler;AsmProfiler_Sampling;ViewMinidump;ProfilerResultViewer;DllTestApp"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="AsmProfiler:Clean;AsmProfiler_Sampling:Clean;ViewMinidump:Clean;ProfilerResultViewer:Clean"/>
+        <CallTarget Targets="AsmProfiler:Clean;AsmProfiler_Sampling:Clean;ViewMinidump:Clean;ProfilerResultViewer:Clean;DllTestApp:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="AsmProfiler:Make;AsmProfiler_Sampling:Make;ViewMinidump:Make;ProfilerResultViewer:Make"/>
+        <CallTarget Targets="AsmProfiler:Make;AsmProfiler_Sampling:Make;ViewMinidump:Make;ProfilerResultViewer:Make;DllTestApp:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
